@@ -15,7 +15,7 @@ body {
 }
 
 #btn {
-    margin-bottom: 15px;
+    margin-bottom: 5px;
     background-color: rgb(85, 85, 85);
     color: #fff;
     transition: all .2s linear;
@@ -112,7 +112,7 @@ input:focus {
     transition: color .1s linear;
 }
 .ingridients:hover {
-    color: #BBDAF0;
+    color: #454545;
 }
 .order-list li {
     cursor: pointer;
@@ -121,12 +121,15 @@ input:focus {
 .active {
     color: #d3b77b;
 }
+.active:hover {
+    color: #d3b77b;
+}
 .order-component {
     transition: color .1s linear;
     color: #d3b77b;
 }
 .order-component:hover {
-    color: #379d71;
+    color: #e0d7d2;
 }
 .popup {
     position: absolute;
@@ -181,15 +184,13 @@ input:focus {
 }
 
 .successful {
-    position: absolute;
-    left: 50%;
-    top: -6%;
-    transform: translate(-50%);
     display: block;
     text-align: center;
-    font-size: 20px;
-    color: green;
+    opacity: 0;
+    font-size: 16px;
+    color: rgb(7, 64, 7);
     transition: all .3s linear;
+    margin-bottom: 5px;
 }
 
 /* Прелодер */
@@ -284,9 +285,6 @@ input:focus {
     .column {
         width: 50%;
         margin-bottom: 20px;
-    }
-    .successful {
-        top: 20%;
     }
 }
 

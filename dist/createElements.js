@@ -47,12 +47,3 @@ export function createPopup() {
     inputTel.addEventListener('input', inputHandler);
     acceptButton.addEventListener('click', acceptOrder);
 }
-export function showSuccessfulSubmission() {
-    const span = document.createElement('span');
-    span.textContent = 'Заявка принята';
-    span.style.opacity = '0';
-    span.classList.add('successful');
-    pizzaWrapper.append(span);
-    setTimeout(() => span.style.opacity = '1');
-    setTimeout(() => span.remove(), 2000);
-}

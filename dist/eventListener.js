@@ -1,8 +1,8 @@
 import { orderState, ingr } from "./constants.js";
-import { createOrderItem, createPopup, showSuccessfulSubmission } from "./createElements.js";
+import { createOrderItem, createPopup } from "./createElements.js";
 import { calculatePrice, clearOrderState, orderFormation } from "./utils.js";
 import { isAddIngridients, checkFullSet } from "./checkElements.js";
-import { changeImage, showTotalPrice } from "./showElements.js";
+import { changeImage, showSuccessfulSubmission, showTotalPrice } from "./showElements.js";
 import { deleteAllOrderItems, deleteOrderItem } from "./deleteElements.js";
 import { renderIngridients } from "./index.js";
 import { validatePhone } from "./validate.js";

@@ -7,3 +7,8 @@ export function changeImage(number) {
     const link = imagesLink[number];
     img.src = link;
 }
+export function showSuccessfulSubmission() {
+    const spanSuccessful = document.getElementsByClassName('successful')[0];
+    spanSuccessful.style.opacity = '1';
+    setTimeout(() => spanSuccessful.style.opacity = '0', 1500);
+}
