@@ -26,15 +26,16 @@ export function checkFullSet(): number {
 }
 
 export function isAddIngridients(category: string, text: string): boolean {
+    console.log(orderState.meat, text)
     switch (category) {
         case Categories.main:
             return orderState.main.length === 0 ? true : false
         case Categories.meat:
-            return orderState.meat.length < 2 && orderState.meat.find((item)=> item.name === text) === undefined ? true : false
+            return orderState.meat.length < 2 && orderState.meat.every((item) => !text.includes(item.name)) ? true : false
         case Categories.sauce:
             return orderState.sauce.length === 0 ? true : false
         case Categories.vegetables:
-            return orderState.vegetables.length < 2 && orderState.vegetables.find((item) => item.name === text) === undefined ? true : false
+            return orderState.vegetables.length < 2 && orderState.vegetables.every((item) => !text.includes(item.name)) ? true : false
         default:
             return false;
     }

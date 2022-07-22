@@ -1,4 +1,4 @@
-import { pizzaWrapper } from "./constants.js";
+import { orderState, pizzaWrapper } from "./constants.js";
 import { acceptOrder, inputHandler, removePopup } from "./eventListener.js";
 export function createIngridientsList(array, category) {
     const container = document.getElementById(`${category}-container`);
@@ -18,6 +18,7 @@ export function createOrderItem(name, category) {
     li.classList.add('order-component');
     li.classList.add(`${category}`);
     container.append(li);
+    console.log(orderState);
 }
 export function createPopup() {
     const popup = document.createElement('div');

@@ -45,7 +45,7 @@ export function deleteItemFromOrderList({ target }) {
     switch (category) {
         case Categories.main:
             orderState.main.forEach(({ name }, index) => {
-                if (name === text) {
+                if (text.includes(name)) {
                     indexElem = index;
                 }
             });
@@ -54,7 +54,7 @@ export function deleteItemFromOrderList({ target }) {
             break;
         case Categories.meat:
             orderState.meat.forEach(({ name }, index) => {
-                if (name === text) {
+                if (text.includes(name)) {
                     indexElem = index;
                 }
             });
@@ -63,7 +63,7 @@ export function deleteItemFromOrderList({ target }) {
             break;
         case Categories.sauce:
             orderState.sauce.forEach(({ name }, index) => {
-                if (name === text) {
+                if (text.includes(name)) {
                     indexElem = index;
                 }
             });
@@ -72,7 +72,7 @@ export function deleteItemFromOrderList({ target }) {
             break;
         case Categories.vegetables:
             orderState.vegetables.forEach(({ name }, index) => {
-                if (name === text) {
+                if (text.includes(name)) {
                     indexElem = index;
                 }
             });
