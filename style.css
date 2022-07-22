@@ -1,0 +1,227 @@
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    border: 0;
+    list-style-type: none;
+}
+body {
+    position: relative;
+    height: 100vh;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    cursor: default;
+}
+
+#btn {
+    margin-bottom: 15px;
+    background-color: rgb(85, 85, 85);
+    color: #fff;
+    transition: all .2s linear;
+    font-family: inherit;
+}
+#btn:hover {
+    background-color: rgb(47, 47, 47);
+}
+
+input:focus {
+    outline: none;
+    box-shadow: 2px 2px 4px #000;
+}
+
+#btn:disabled {
+    cursor: auto;
+    background-color: rgb(159 158 158);
+    color: rgb(194, 194, 194);
+}
+
+.pizza-wrapper {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
+    border: 2px solid #615C51;
+    background-color: #fff;
+}
+.view-order h2 {
+    margin-bottom: 15px;
+}
+.wrapper-top {
+    display: flex;
+    border-bottom: 1px solid #615C51;
+    min-height: 400px;
+}
+#price-container {
+    font-weight: 800;
+}
+.order-area-left {
+    width: 40%;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border-right: 1px solid #615C51;
+    background-color: #454545;
+    color: #fff;
+}
+.order-area-right {
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #e0d7d2;
+   
+}
+.order-area-right img {
+    display: block;
+    width: 100%;
+    max-width: 400px;
+    margin-bottom: 15px;
+}
+ 
+.order-area-right button {
+    width: 120px;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.wrapper-bottom {
+    display: flex;
+    padding: 15px;
+    background-color: #866860;
+    color: #fff;
+}
+.column {
+    width: 25%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.column h3 {
+    margin-bottom: 10px;
+}
+.ingridients {
+    cursor: pointer;
+    transition: color .1s linear;
+}
+.ingridients:hover {
+    color: #BBDAF0;
+}
+.order-list li {
+    cursor: pointer;
+    margin-bottom: 7px;
+}
+.active {
+    color: #d3b77b;
+}
+.order-component {
+    transition: color .1s linear;
+    color: #d3b77b;
+}
+.order-component:hover {
+    color: #379d71;
+}
+.popup {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: 100;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    width: 400px;
+    height: 300px;
+    background-color: #d7d7d7;
+    transition: all .3s linear;
+    border: 1px solid #615C51;
+}
+
+.popup button {
+    cursor: pointer;
+    padding: 10px;
+    transition: .1s linear;
+}
+.popup button:hover  {
+    background-color: #795a4e;
+}
+.popup button:disabled {
+    cursor: auto;
+    background-color: #c5c5c5;
+}
+.popup input {
+    width: 200px;
+    padding: 5px;
+    font-size: 16px;
+}
+
+.mask {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    width: 100%;
+    height: 100%;
+    background-color: #000000a1;
+}
+
+.button-container {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+}
+
+.successful {
+    position: absolute;
+    left: 50%;
+    top: -6%;
+    transform: translate(-50%);
+    display: block;
+    text-align: center;
+    font-size: 20px;
+    color: green;
+    transition: all .3s linear;
+}
+
+@media (max-width: 650px) {
+    .pizza-wrapper {
+        position: initial;
+        top: 0;
+        left: 0;
+        transform: translate(0%);
+    }
+    .wrapper-top {
+        flex-direction: column;
+    }
+    .order-area-left {
+        width: 100%;
+        min-height: 260px;
+    }
+    .order-area-right {
+        width: 100%;
+    }
+    .wrapper-bottom {
+        flex-wrap: wrap;
+    }
+    .column {
+        width: 50%;
+        margin-bottom: 20px;
+    }
+    .successful {
+        top: 20%;
+    }
+}
+
+@media (max-width: 420px) {
+    .popup {
+        width: 90%;
+    }
+}

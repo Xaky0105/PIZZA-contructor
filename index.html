@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Pizza</title>
+</head>
+<body>
+    <div class="pizza-wrapper">
+        <div class="wrapper-top">
+            <div class="order-area-left">
+                <div class="view-order">
+                    <h2>Область просмотра заказа:</h2>
+                    <ul class="order-list"></ul>
+                </div>
+                <span id="price-container">Стоимость заказа: 0$</span>
+            </div>
+            <div class="order-area-right">
+                <img id="img" src="./img/pizza0.png" alt="">
+                <button id="btn" disabled>Заказать</button>
+            </div>
+        </div>
+        <div class="wrapper-bottom" id="ingridients-container">
+            <div class="column">
+                <h3>Основа</h3>
+                <ul class="list" id="main-container"></ul>
+            </div>
+            <div class="column">
+                <h3>Мясо</h3>
+                <ul class="list" id="meat-container"></ul>
+            </div>
+            <div class="column">
+                <h3>Овощи</h3>
+                <ul class="list" id="vegetables-container"></ul>
+            </div>
+            <div class="column">
+                <h3>Соус</h3>
+                <ul class="list" id="sauce-container"></ul>
+            </div>
+        </div>
+    </div>
+    
+    <script type="module" src="./dist/index.js"></script>
+</body>
+</html>
