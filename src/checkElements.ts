@@ -26,7 +26,6 @@ export function checkFullSet(): number {
 }
 
 export function isAddIngridients(category: string, text: string): boolean {
-    console.log(orderState.meat, text)
     switch (category) {
         case Categories.main:
             return orderState.main.length === 0 ? true : false

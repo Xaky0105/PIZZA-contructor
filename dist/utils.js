@@ -10,7 +10,6 @@ export function deleteActiveElements(text, category) {
     const ingridTypeActiveNode = Array.from(document.getElementsByClassName(`ingridients ${category} active`));
     ingridTypeActiveNode.forEach((node) => {
         if (node.textContent === text) {
-            console.log(text, node.textContent);
             node.classList.remove('active');
         }
     });

@@ -25,7 +25,6 @@ export function checkFullSet() {
     return stepOrder;
 }
 export function isAddIngridients(category, text) {
-    console.log(orderState.meat, text);
     switch (category) {
         case Categories.main:
             return orderState.main.length === 0 ? true : false;

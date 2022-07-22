@@ -22,7 +22,6 @@ export function createOrderItem(name: string, category: string): void {
     li.classList.add('order-component');
     li.classList.add(`${category}`);
     container.append(li);
-    console.log(orderState)
 }
 
 export function createPopup(): void {
