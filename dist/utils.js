@@ -9,6 +9,7 @@ export function calculatePrice() {
 export function deleteActiveElements(text, category) {
     const ingridTypeActiveNode = Array.from(document.getElementsByClassName(`ingridients ${category} active`));
     ingridTypeActiveNode.forEach((node) => {
+        console.log(text, node.textContent);
         if (node.textContent === text) {
             node.classList.remove('active');
         }

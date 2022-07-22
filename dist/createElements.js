@@ -7,7 +7,7 @@ export function createIngridientsList(array, category) {
         const li = document.createElement('li');
         li.classList.add('ingridients');
         li.classList.add(`${category}`);
-        li.textContent = item.name;
+        li.textContent = `${item.price}$ - ${item.name}`;
         container.append(li);
     });
 }

@@ -13,19 +13,19 @@ export function addItemToOrderList(e) {
         const category = e.target.parentNode.id.split('-')[0];
         if (isAddIngridients(category, text)) {
             if (category === Categories.main) {
-                const component = ingr.main.filter((item) => item.name === text);
+                const component = ingr.main.filter((item) => item.name === text.split('- ')[1]);
                 orderState.main.push(...component);
             }
             else if (category === Categories.meat) {
-                const component = ingr.meat.filter((item) => item.name === text);
+                const component = ingr.meat.filter((item) => item.name === text.split('- ')[1]);
                 orderState.meat.push(...component);
             }
             else if (category === Categories.sauce) {
-                const component = ingr.sauce.filter((item) => item.name === text);
+                const component = ingr.sauce.filter((item) => item.name === text.split('- ')[1]);
                 orderState.sauce.push(...component);
             }
             else if (category === Categories.vegetables) {
-                const component = ingr.vegetables.filter((item) => item.name === text);
+                const component = ingr.vegetables.filter((item) => item.name === text.split('- ')[1]);
                 orderState.vegetables.push(...component);
             }
             createOrderItem(text, category);
@@ -38,7 +38,6 @@ export function addItemToOrderList(e) {
     }
 }
 export function deleteItemFromOrderList({ target }) {
-    console.log(typeof target);
     const targetElem = target;
     const text = target.textContent;
     const category = target.classList[1];

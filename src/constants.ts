@@ -10,23 +10,23 @@ export const ingr: IngridientsType = {
     main: [
         {name: 'Чесночная основа', price: 5},
         {name: 'Томатная основа', price: 4},
-        {name: 'Сырная основа', price: 3},
+        {name: 'Сырная основа', price: 7},
         {name: 'Основа барбекю', price: 6}
     ],
     sauce: [
-        {name: 'Томатный соус', price: 5},
+        {name: 'Томатный соус', price: 2},
         {name: 'Соус барбекю', price: 4},
         {name: 'Сырный соус', price: 3},
         {name: 'Соус карри', price: 6}
     ],
     vegetables: [
         {name: 'Лук', price: 5},
-        {name: 'Шампиньоны', price: 4},
+        {name: 'Шампиньоны', price: 9},
         {name: 'Огурцы', price: 3},
         {name: 'Ананас', price: 6}
     ],
     meat: [
-        {name: 'Бекон', price: 5},
+        {name: 'Бекон', price: 7},
         {name: 'Салями', price: 4},
         {name: 'Курица', price: 3},
         {name: 'Ветчина', price: 6}
@@ -40,7 +40,7 @@ export const orderState: IngridientsType = {
     meat: [],
 }
 
-export const imagesLink = [
+export const imagesLink: string[] = [
     './img/pizza0.png', 
     './img/pizza1.png', 
     './img/pizza2.png', 

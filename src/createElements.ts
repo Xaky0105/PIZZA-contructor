@@ -10,7 +10,7 @@ export function createIngridientsList(array: IngridientsItemType[], category: st
         const li: HTMLLIElement = document.createElement('li');
         li.classList.add('ingridients');
         li.classList.add(`${category}`);
-        li.textContent = item.name;
+        li.textContent = `${item.price}$ - ${item.name}`;
         container.append(li);
     })
 }

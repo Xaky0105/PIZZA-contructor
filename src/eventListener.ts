@@ -10,20 +10,20 @@ import { Categories, IngridientsItemType } from "./types.js";
 
 export function addItemToOrderList(e: any): void { // Не знаю какой тип у Event
     if (e.target.nodeName === 'LI') {
-        const text: string = e.target.textContent
+        const text: string = e.target.textContent;
         const category: string = e.target.parentNode.id.split('-')[0];
         if (isAddIngridients(category, text)) {
             if (category === Categories.main) {
-                const component: IngridientsItemType[] = ingr.main.filter((item) => item.name === text);
+                const component: IngridientsItemType[] = ingr.main.filter((item) => item.name === text.split('- ')[1]);
                 orderState.main.push(...component)
             } else if (category === Categories.meat) {
-                const component: IngridientsItemType[] = ingr.meat.filter((item) => item.name === text);
+                const component: IngridientsItemType[] = ingr.meat.filter((item) => item.name === text.split('- ')[1]);
                 orderState.meat.push(...component)
             } else if (category === Categories.sauce) {
-                const component: IngridientsItemType[] = ingr.sauce.filter((item) => item.name === text);
+                const component: IngridientsItemType[] = ingr.sauce.filter((item) => item.name === text.split('- ')[1]);
                 orderState.sauce.push(...component)
             } else if (category === Categories.vegetables) {
-                const component: IngridientsItemType[] = ingr.vegetables.filter((item) => item.name === text);
+                const component: IngridientsItemType[] = ingr.vegetables.filter((item) => item.name === text.split('- ')[1]);
                 orderState.vegetables.push(...component)
             }
             createOrderItem(text, category);
@@ -37,7 +37,6 @@ export function addItemToOrderList(e: any): void { // Не знаю какой �
 }
 
 export function deleteItemFromOrderList({target}: any): void { // Не знаю какой тип у Event
-    console.log(typeof target)
     const targetElem: HTMLLIElement = target;
     const text: string = target.textContent;
     const category: string = target.classList[1];

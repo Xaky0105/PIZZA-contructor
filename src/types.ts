@@ -7,6 +7,7 @@ export enum Categories {
 
 export type IngridientsType = {
     [key: string]: IngridientsItemType[];
+    
     main: IngridientsItemType[],
     sauce: IngridientsItemType[],
     vegetables: IngridientsItemType[],
