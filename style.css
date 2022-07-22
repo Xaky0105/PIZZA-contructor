@@ -191,6 +191,7 @@ input:focus {
     color: rgb(7, 64, 7);
     transition: all .3s linear;
     margin-bottom: 5px;
+    
 }
 
 /* Прелодер */
