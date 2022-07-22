@@ -1,14 +1,7 @@
-import { buttonOrder, ingridientsContainer, orderList, ingr, Categories } from "./constants.js";
+import { buttonOrder, ingridientsContainer, orderList, ingr } from "./constants.js";
 import { createIngridientsList } from "./createElements.js";
-import { addItemToOrderList, deleteItemFromOrderList, orderButtonClickHandler } from './eventListener.js';
-
-window.onload = function startApp() {
-    renderIngridients()
-    
-    ingridientsContainer.addEventListener('click', addItemToOrderList);
-    orderList.addEventListener('click', deleteItemFromOrderList);
-    buttonOrder.addEventListener('click', orderButtonClickHandler);
-}
+import { addItemToOrderList, deleteItemFromOrderList, orderButton } from './eventListener.js';
+import { Categories } from "./types.js";
 
 export function renderIngridients(): void {
     createIngridientsList(ingr.main, Categories.main);
@@ -16,5 +9,16 @@ export function renderIngridients(): void {
     createIngridientsList(ingr.sauce, Categories.sauce);
     createIngridientsList(ingr.vegetables, Categories.vegetables);
 }
+
+renderIngridients()
+
+ingridientsContainer.addEventListener('click', addItemToOrderList);
+orderList.addEventListener('click', deleteItemFromOrderList);
+buttonOrder.addEventListener('click', orderButton);
+
+
+
+
+
 
 

@@ -1,4 +1,4 @@
-import { orderState, ingr, Categories } from "./constants.js";
+import { orderState, ingr } from "./constants.js";
 import { createOrderItem, createPopup, showSuccessfulSubmission } from "./createElements.js";
 import { calculatePrice, clearOrderState, orderFormation } from "./utils.js";
 import { isAddIngridients, checkFullSet } from "./checkElements.js";
@@ -6,6 +6,7 @@ import { changeImage, showTotalPrice } from "./showElements.js";
 import { deleteAllOrderItems, deleteOrderItem } from "./deleteElements.js";
 import { renderIngridients } from "./index.js";
 import { validatePhone } from "./validate.js";
+import { Categories } from "./types.js";
 export function addItemToOrderList(e) {
     if (e.target.nodeName === 'LI') {
         const text = e.target.textContent;
@@ -81,22 +82,22 @@ export function deleteItemFromOrderList({ target }) {
             break;
     }
 }
-export function orderButtonClickHandler() {
+export function orderButton() {
     createPopup();
 }
-export function removePopupClickHandler() {
+export function removePopup() {
     const popup = document.getElementsByClassName('popup')[0];
     const mask = document.getElementsByClassName('mask')[0];
     popup.remove();
     mask.remove();
 }
-export function acceptOrderClickHandler() {
+export function acceptOrder() {
     const inputTel = document.getElementById('inputTel');
     const tel = inputTel.value;
     const order = orderFormation(orderState, tel);
     console.log(order);
     showSuccessfulSubmission();
-    removePopupClickHandler();
+    removePopup();
     renderIngridients();
     clearOrderState();
     deleteAllOrderItems();

@@ -3,13 +3,6 @@ export const ingridientsContainer = document.getElementById('ingridients-contain
 export const orderList = document.getElementsByClassName('order-list')[0];
 export const priceContainer = document.getElementById('price-container');
 export const pizzaWrapper = document.getElementsByClassName('pizza-wrapper')[0];
-export var Categories;
-(function (Categories) {
-    Categories["main"] = "main";
-    Categories["sauce"] = "sauce";
-    Categories["vegetables"] = "vegetables";
-    Categories["meat"] = "meat";
-})(Categories || (Categories = {}));
 export const ingr = {
     main: [
         { name: 'Чесночная основа', price: 5 },
@@ -42,3 +35,10 @@ export const orderState = {
     vegetables: [],
     meat: [],
 };
+export const imagesLink = [
+    './img/pizza0.png',
+    './img/pizza1.png',
+    './img/pizza2.png',
+    './img/pizza3.png',
+    './img/pizza4.png'
+];

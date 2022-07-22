@@ -1,4 +1,5 @@
-import { orderState, buttonOrder, Categories } from "./constants.js";
+import { orderState, buttonOrder } from "./constants.js";
+import { Categories } from "./types.js";
 export function checkFullSet() {
     let stepOrder = 0;
     for (let key in orderState) {

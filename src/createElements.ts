@@ -1,5 +1,6 @@
-import { IngridientsItemType, pizzaWrapper } from "./constants.js";
-import { acceptOrderClickHandler, inputHandler, removePopupClickHandler } from "./eventListener.js";
+import { pizzaWrapper } from "./constants.js";
+import { acceptOrder, inputHandler, removePopup } from "./eventListener.js";
+import { IngridientsItemType } from "./types.js";
 
 
 export function createIngridientsList(array: IngridientsItemType[], category: string): void {
@@ -51,9 +52,9 @@ export function createPopup(): void {
     pizzaWrapper.append(popup, mask);
     popup.append(textContainer, inputTel, buttonContainer);
 
-    backButton.addEventListener('click', removePopupClickHandler);
+    backButton.addEventListener('click', removePopup);
     inputTel.addEventListener('input', inputHandler);
-    acceptButton.addEventListener('click', acceptOrderClickHandler);
+    acceptButton.addEventListener('click', acceptOrder);
 }
 
 export function showSuccessfulSubmission() {

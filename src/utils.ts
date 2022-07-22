@@ -1,4 +1,5 @@
-import { orderState, IngridientsItemType, IngridientsType } from "./constants.js";
+import { orderState } from "./constants.js";
+import { IngridientsItemType, IngridientsType, OrderInterface } from "./types.js";
 
 export function calculatePrice(): number {
     let totalPrice: number = 0;
@@ -24,13 +25,16 @@ export function clearOrderState(): void {
 }
 
 export function orderFormation(state: IngridientsType, phoneNumber: string) {
-    const order = [];
+    const order: OrderInterface = {
+        pizza: [],
+        userInfo: [],
+    };
     for (let key in state) {
-        state[key].forEach(({name, price}) => {
-            order.push({ingridient: name, price: price});
+        state[key].forEach((obj) => {
+            order.pizza.push({name: obj.name, price: obj.price});
         })
     }
-    order.push({phone: phoneNumber});
+    order.userInfo.push({phone: phoneNumber});
     return order;
 }
 

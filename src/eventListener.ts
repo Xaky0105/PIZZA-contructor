@@ -1,4 +1,4 @@
-import { orderState, ingr, IngridientsItemType, Categories } from "./constants.js";
+import { orderState, ingr } from "./constants.js";
 import { createOrderItem, createPopup, showSuccessfulSubmission } from "./createElements.js";
 import { calculatePrice, clearOrderState, orderFormation } from "./utils.js";
 import { isAddIngridients, checkFullSet } from "./checkElements.js";
@@ -6,6 +6,7 @@ import { changeImage, showTotalPrice } from "./showElements.js";
 import { deleteAllOrderItems, deleteOrderItem } from "./deleteElements.js";
 import { renderIngridients } from "./index.js";
 import { validatePhone } from "./validate.js";
+import { Categories, IngridientsItemType } from "./types.js";
 
 export function addItemToOrderList(e: any): void { // Не знаю какой тип у Event
     if (e.target.nodeName === 'LI') {
@@ -81,24 +82,24 @@ export function deleteItemFromOrderList({target}: any): void { // Не знаю 
     }
 }
 
-export function orderButtonClickHandler(): void {
+export function orderButton(): void {
     createPopup();
 }
 
-export function removePopupClickHandler(): void {
+export function removePopup(): void {
     const popup = document.getElementsByClassName('popup')[0] as HTMLDivElement;
     const mask = document.getElementsByClassName('mask')[0] as HTMLDivElement
     popup.remove();
     mask.remove();
 }
 
-export function acceptOrderClickHandler(): void {
+export function acceptOrder(): void {
     const inputTel = document.getElementById('inputTel') as HTMLInputElement;
     const tel: string = inputTel.value;
     const order = orderFormation(orderState, tel);
     console.log(order);
     showSuccessfulSubmission();
-    removePopupClickHandler();
+    removePopup();
     renderIngridients();
     clearOrderState();
     deleteAllOrderItems();

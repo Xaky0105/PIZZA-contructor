@@ -1,5 +1,5 @@
 import { pizzaWrapper } from "./constants.js";
-import { acceptOrderClickHandler, inputHandler, removePopupClickHandler } from "./eventListener.js";
+import { acceptOrder, inputHandler, removePopup } from "./eventListener.js";
 export function createIngridientsList(array, category) {
     const container = document.getElementById(`${category}-container`);
     container.textContent = '';
@@ -43,9 +43,9 @@ export function createPopup() {
     buttonContainer.append(backButton, acceptButton);
     pizzaWrapper.append(popup, mask);
     popup.append(textContainer, inputTel, buttonContainer);
-    backButton.addEventListener('click', removePopupClickHandler);
+    backButton.addEventListener('click', removePopup);
     inputTel.addEventListener('input', inputHandler);
-    acceptButton.addEventListener('click', acceptOrderClickHandler);
+    acceptButton.addEventListener('click', acceptOrder);
 }
 export function showSuccessfulSubmission() {
     const span = document.createElement('span');
