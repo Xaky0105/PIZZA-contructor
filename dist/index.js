@@ -2,6 +2,9 @@ import { buttonOrder, ingridientsContainer, orderList, ingr } from "./constants.
 import { createIngridientsList } from "./createElements.js";
 import { addItemToOrderList, deleteItemFromOrderList, orderButton } from './eventListener.js';
 import { Categories } from "./types.js";
+window.onload = function () {
+    document.body.classList.add('loaded');
+};
 export function renderIngridients() {
     createIngridientsList(ingr.main, Categories.main);
     createIngridientsList(ingr.meat, Categories.meat);
