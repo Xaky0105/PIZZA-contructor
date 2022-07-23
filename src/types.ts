@@ -5,13 +5,10 @@ export enum Categories {
     meat = 'meat'
 }
 
+export type CategoriesType = keyof typeof Categories;
+
 export type IngridientsType = {
     [key: string]: IngridientsItemType[];
-    
-    main: IngridientsItemType[],
-    sauce: IngridientsItemType[],
-    vegetables: IngridientsItemType[],
-    meat: IngridientsItemType[]
 }
 export type IngridientsItemType = {
     name: string,

@@ -6,10 +6,7 @@ window.onload = function () {
     document.body.classList.add('loaded');
 };
 export function renderIngridients() {
-    createIngridientsList(ingr.main, Categories.main);
-    createIngridientsList(ingr.meat, Categories.meat);
-    createIngridientsList(ingr.sauce, Categories.sauce);
-    createIngridientsList(ingr.vegetables, Categories.vegetables);
+    Object.keys(ingr).forEach((key) => createIngridientsList(ingr[key], Categories[key]));
 }
 renderIngridients();
 ingridientsContainer.addEventListener('click', addItemToOrderList);

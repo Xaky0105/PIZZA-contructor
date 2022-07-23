@@ -38,3 +38,7 @@ export function orderFormation(state: IngridientsType, phoneNumber: string) {
     return order;
 }
 
+export function isAllElemDontIncludes(category: string, text: string) {
+    return orderState[category].every((item) => !text.includes(item.name));
+}
+
