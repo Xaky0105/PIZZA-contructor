@@ -32,44 +32,18 @@ export function deleteItemFromOrderList({target}: any): void { // Не знаю 
     const text: string = target.textContent;
     const category: string = target.classList[1];
     let indexElem: number = 0;
-    switch (category) {
-        case Categories.main:
-            orderState.main.forEach(({name}, index) => {
+
+    Object.keys(Categories).forEach((categoryName) => {
+        if (categoryName === category) {
+            orderState[category].forEach(({name}, index) => {
                 if (text.includes(name)) {
                     indexElem = index;
                 }
             })
-            orderState.main.splice(indexElem, 1)
+            orderState[category].splice(indexElem, 1);
             deleteOrderItem(text, category, targetElem);
-            break
-        case Categories.meat:
-            orderState.meat.forEach(({name}, index) => {             
-                if (text.includes(name)) {
-                    indexElem = index;
-                }
-            })
-            orderState.meat.splice(indexElem, 1)
-            deleteOrderItem(text, category, targetElem);
-            break
-        case Categories.sauce:
-            orderState.sauce.forEach(({name}, index) => {
-                if (text.includes(name)) {
-                    indexElem = index;
-                }
-            })
-            orderState.sauce.splice(indexElem, 1)
-            deleteOrderItem(text, category, targetElem);
-            break
-        case Categories.vegetables:
-            orderState.vegetables.forEach(({name}, index) => {
-                if (text.includes(name)) {
-                    indexElem = index;
-                }
-            })
-            orderState.vegetables.splice(indexElem, 1)
-            deleteOrderItem(text, category, targetElem);
-            break
-    }
+        }
+    })
 }
 
 export function removePopup(): void {
