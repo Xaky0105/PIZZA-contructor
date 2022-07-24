@@ -7,11 +7,13 @@ import { deleteAllOrderItems, deleteOrderItem } from "./deleteElements.js";
 import { renderIngridients } from "./index.js";
 import { validatePhone } from "./validate.js";
 import { Categories } from "./types.js";
-export function addItemToOrderList(e) {
-    if (e.target.nodeName === 'LI') {
-        const text = e.target.textContent;
+export function addItemToOrderList({ target }) {
+    const targetElem = target;
+    if (targetElem.nodeName === 'LI') {
+        const text = targetElem.textContent;
         const nameWithoutOtherSymbols = text.split('- ')[1];
-        const category = e.target.parentNode.id.split('-')[0];
+        const parentElem = targetElem.parentNode;
+        const category = parentElem.id.split('-')[0];
         if (isAddIngridients(category, text)) {
             Object.keys(Categories).forEach((categoryName) => {
                 if (category === categoryName) {
@@ -21,14 +23,14 @@ export function addItemToOrderList(e) {
             });
             createOrderItem(text, category);
             rerenderPriceAndImage();
-            e.target.classList.add('active');
+            targetElem.classList.add('active');
         }
     }
 }
 export function deleteItemFromOrderList({ target }) {
     const targetElem = target;
-    const text = target.textContent;
-    const category = target.classList[1];
+    const text = targetElem.textContent;
+    const category = targetElem.classList[1];
     let indexElem = 0;
     Object.keys(Categories).forEach((categoryName) => {
         if (categoryName === category) {

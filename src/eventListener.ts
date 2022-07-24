@@ -6,13 +6,15 @@ import { changeImage, showSuccessfulSubmission } from "./showElements.js";
 import { deleteAllOrderItems, deleteOrderItem } from "./deleteElements.js";
 import { renderIngridients } from "./index.js";
 import { validatePhone } from "./validate.js";
-import { Categories, IngridientsItemType } from "./types.js";
+import { Categories, IngridientsItemType, OrderInterface, ParentNodeWithId } from "./types.js";
 
-export function addItemToOrderList(e: any): void { // Не знаю какой тип у Event
-    if (e.target.nodeName === 'LI') {
-        const text: string = e.target.textContent;
-        const nameWithoutOtherSymbols = text.split('- ')[1];
-        const category: string = e.target.parentNode.id.split('-')[0];
+export function addItemToOrderList({target}: MouseEvent): void {
+    const targetElem = target as HTMLElement;
+    if (targetElem.nodeName === 'LI') {
+        const text: string = targetElem.textContent as string;
+        const nameWithoutOtherSymbols: string = text.split('- ')[1];
+        const parentElem: ParentNodeWithId= targetElem.parentNode as ParentNodeWithId
+        const category: string = parentElem.id.split('-')[0];
         if (isAddIngridients(category, text)) {
             Object.keys(Categories).forEach((categoryName) => {
                 if (category === categoryName) {
@@ -22,15 +24,15 @@ export function addItemToOrderList(e: any): void { // Не знаю какой �
             })
             createOrderItem(text, category);
             rerenderPriceAndImage()
-            e.target.classList.add('active');
+            targetElem.classList.add('active');
         }
     }
 }
 
-export function deleteItemFromOrderList({target}: any): void { // Не знаю какой тип у Event
-    const targetElem: HTMLLIElement = target;
-    const text: string = target.textContent;
-    const category: string = target.classList[1];
+export function deleteItemFromOrderList({target}: MouseEvent): void { 
+    const targetElem = target as HTMLLIElement;
+    const text = targetElem.textContent as string;
+    const category: string = targetElem.classList[1];
     let indexElem: number = 0;
 
     Object.keys(Categories).forEach((categoryName) => {
@@ -56,7 +58,7 @@ export function removePopup(): void {
 export function acceptOrder(): void {
     const inputTel = document.getElementById('inputTel') as HTMLInputElement;
     const tel: string = inputTel.value;
-    const order = orderFormation(orderState, tel);
+    const order: OrderInterface = orderFormation(orderState, tel);
     console.log(order);
     showSuccessfulSubmission();
     removePopup();

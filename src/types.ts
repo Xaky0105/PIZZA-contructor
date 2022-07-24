@@ -18,3 +18,7 @@ export interface OrderInterface {
     pizza: IngridientsItemType[]
     userInfo: object[]
 }
+
+export interface ParentNodeWithId extends ParentNode {
+    id: string
+}
