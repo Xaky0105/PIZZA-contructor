@@ -7,11 +7,11 @@ import { deleteAllOrderItems, deleteOrderItem } from "./deleteElements.js";
 import { renderIngridients } from "./index.js";
 import { validatePhone } from "./validate.js";
 import { Categories } from "./types.js";
-export function addItemToOrderList({ target }) {
-    if (target.nodeName === 'LI') {
-        const text = target.textContent;
+export function addItemToOrderList(e) {
+    if (e.target.nodeName === 'LI') {
+        const text = e.target.textContent;
         const nameWithoutOtherSymbols = text.split('- ')[1];
-        const category = target.parentNode.id.split('-')[0];
+        const category = e.target.parentNode.id.split('-')[0];
         if (isAddIngridients(category, text)) {
             Object.keys(Categories).forEach((categoryName) => {
                 if (category === categoryName) {
@@ -21,7 +21,7 @@ export function addItemToOrderList({ target }) {
             });
             createOrderItem(text, category);
             rerenderPriceAndImage();
-            target.classList.add('active');
+            e.target.classList.add('active');
         }
     }
 }
@@ -30,44 +30,17 @@ export function deleteItemFromOrderList({ target }) {
     const text = target.textContent;
     const category = target.classList[1];
     let indexElem = 0;
-    switch (category) {
-        case Categories.main:
-            orderState.main.forEach(({ name }, index) => {
+    Object.keys(Categories).forEach((categoryName) => {
+        if (categoryName === category) {
+            orderState[category].forEach(({ name }, index) => {
                 if (text.includes(name)) {
                     indexElem = index;
                 }
             });
-            orderState.main.splice(indexElem, 1);
+            orderState[category].splice(indexElem, 1);
             deleteOrderItem(text, category, targetElem);
-            break;
-        case Categories.meat:
-            orderState.meat.forEach(({ name }, index) => {
-                if (text.includes(name)) {
-                    indexElem = index;
-                }
-            });
-            orderState.meat.splice(indexElem, 1);
-            deleteOrderItem(text, category, targetElem);
-            break;
-        case Categories.sauce:
-            orderState.sauce.forEach(({ name }, index) => {
-                if (text.includes(name)) {
-                    indexElem = index;
-                }
-            });
-            orderState.sauce.splice(indexElem, 1);
-            deleteOrderItem(text, category, targetElem);
-            break;
-        case Categories.vegetables:
-            orderState.vegetables.forEach(({ name }, index) => {
-                if (text.includes(name)) {
-                    indexElem = index;
-                }
-            });
-            orderState.vegetables.splice(indexElem, 1);
-            deleteOrderItem(text, category, targetElem);
-            break;
-    }
+        }
+    });
 }
 export function removePopup() {
     const popup = document.getElementsByClassName('popup')[0];

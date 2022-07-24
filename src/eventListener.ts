@@ -8,11 +8,11 @@ import { renderIngridients } from "./index.js";
 import { validatePhone } from "./validate.js";
 import { Categories, IngridientsItemType } from "./types.js";
 
-export function addItemToOrderList({target}: any): void { // Не знаю какой тип у Event
-    if (target.nodeName === 'LI') {
-        const text: string = target.textContent;
+export function addItemToOrderList(e: any): void { // Не знаю какой тип у Event
+    if (e.target.nodeName === 'LI') {
+        const text: string = e.target.textContent;
         const nameWithoutOtherSymbols = text.split('- ')[1];
-        const category: string = target.parentNode.id.split('-')[0];
+        const category: string = e.target.parentNode.id.split('-')[0];
         if (isAddIngridients(category, text)) {
             Object.keys(Categories).forEach((categoryName) => {
                 if (category === categoryName) {
@@ -22,7 +22,7 @@ export function addItemToOrderList({target}: any): void { // Не знаю ка�
             })
             createOrderItem(text, category);
             rerenderPriceAndImage()
-            target.classList.add('active');
+            e.target.classList.add('active');
         }
     }
 }
@@ -71,7 +71,7 @@ export function inputHandler(): void {
     const inputTel = document.getElementById('inputTel') as HTMLInputElement;
     const acceptButton = document.getElementById('btn-accept') as HTMLButtonElement;
     if (validatePhone(inputTel.value)) {
-        acceptButton.disabled = false
+        acceptButton.disabled = false;
     } else {
         acceptButton.disabled = true;
     }
