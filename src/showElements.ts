@@ -5,7 +5,7 @@ export function showTotalPrice(totalPrice: number): void {
 }
 
 export function changeImage(number: number): void {
-    const img = document.getElementById('img') as HTMLImageElement
+    const img = document.getElementById('img') as HTMLImageElement;
     const link = imagesLink[number];
     img.src = link;
 }

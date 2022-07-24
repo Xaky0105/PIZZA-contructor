@@ -1,10 +1,10 @@
 import { IngridientsType } from "./types"
 
-export const buttonOrder = document.getElementById('btn') as HTMLButtonElement
-export const ingridientsContainer = document.getElementById('ingridients-container') as HTMLDivElement
-export const orderList = document.getElementsByClassName('order-list')[0] as HTMLUListElement
-export const priceContainer = document.getElementById('price-container') as HTMLSpanElement
-export const pizzaWrapper = document.getElementsByClassName('pizza-wrapper')[0] as HTMLDivElement
+export const buttonOrder = document.getElementById('btn') as HTMLButtonElement;
+export const ingridientsContainer = document.getElementById('ingridients-container') as HTMLDivElement;
+export const orderList = document.getElementsByClassName('order-list')[0] as HTMLUListElement;
+export const priceContainer = document.getElementById('price-container') as HTMLSpanElement;
+export const pizzaWrapper = document.getElementsByClassName('pizza-wrapper')[0] as HTMLDivElement;
 
 export const ingr: IngridientsType = {
     main: [

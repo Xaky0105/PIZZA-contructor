@@ -31,7 +31,7 @@ export function createPopup(): void {
     const backButton: HTMLButtonElement = document.createElement('button');
     const acceptButton: HTMLButtonElement = document.createElement('button');
     const mask: HTMLDivElement = document.createElement('div');
-    const inputTel: HTMLInputElement = document.createElement('input')
+    const inputTel: HTMLInputElement = document.createElement('input');
 
     popup.classList.add('popup');
     mask.classList.add('mask');
@@ -41,8 +41,8 @@ export function createPopup(): void {
     setTimeout(() => popup.style.opacity = '1');
     acceptButton.disabled = true;
     inputTel.type = 'tel';
-    inputTel.id = 'inputTel'
-    inputTel.placeholder = '+375290000000'
+    inputTel.id = 'inputTel';
+    inputTel.placeholder = '+375290000000';
     textContainer.textContent = `Для подтверждения заказа оставьте свой номер телефона`;
     backButton.textContent = 'Вернуться назад';
     acceptButton.textContent = 'Подтвердить';

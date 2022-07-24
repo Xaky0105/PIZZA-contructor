@@ -1,11 +1,14 @@
+import { checkFullSet } from "./checkElements.js";
 import { orderState } from "./constants.js";
-import { IngridientsItemType, IngridientsType, OrderInterface } from "./types.js";
+import { changeImage, showTotalPrice } from "./showElements.js";
+import { IngridientsType, OrderInterface } from "./types.js";
 
 export function calculatePrice(): number {
     let totalPrice: number = 0;
-    for(let key in orderState) {
-        orderState[key].forEach((item: IngridientsItemType) => totalPrice += item.price);
-    }
+    const keys: string[] = Object.keys(orderState);
+    keys.forEach((key) => orderState[key].forEach((item) => {
+        totalPrice += item.price
+    }))
     return totalPrice;
 }
 
@@ -19,9 +22,8 @@ export function deleteActiveElements(text: string, category: string): void {
 }
 
 export function clearOrderState(): void {
-    for (let key in orderState) {
-        orderState[key] = [];
-    }
+    const keys: string[] = Object.keys(orderState);
+    keys.forEach(key => orderState[key] = []);
 }
 
 export function orderFormation(state: IngridientsType, phoneNumber: string) {
@@ -29,11 +31,12 @@ export function orderFormation(state: IngridientsType, phoneNumber: string) {
         pizza: [],
         userInfo: [],
     };
-    for (let key in state) {
+    const keys: string[] = Object.keys(state);
+    keys.forEach((key) => {
         state[key].forEach((obj) => {
             order.pizza.push({name: obj.name, price: obj.price});
         })
-    }
+    })
     order.userInfo.push({phone: phoneNumber});
     return order;
 }
@@ -42,3 +45,10 @@ export function isAllElemDontIncludes(category: string, text: string) {
     return orderState[category].every((item) => !text.includes(item.name));
 }
 
+
+export function rerenderPriceAndImage() {
+    const currentPrice: number = calculatePrice();
+    showTotalPrice(currentPrice);
+    const orderStep: number = checkFullSet();
+    changeImage(orderStep);
+}

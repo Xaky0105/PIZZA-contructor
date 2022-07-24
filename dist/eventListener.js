@@ -1,39 +1,27 @@
 import { orderState, ingr } from "./constants.js";
-import { createOrderItem, createPopup } from "./createElements.js";
-import { calculatePrice, clearOrderState, orderFormation } from "./utils.js";
+import { createOrderItem } from "./createElements.js";
+import { clearOrderState, orderFormation, rerenderPriceAndImage } from "./utils.js";
 import { isAddIngridients, checkFullSet } from "./checkElements.js";
-import { changeImage, showSuccessfulSubmission, showTotalPrice } from "./showElements.js";
+import { changeImage, showSuccessfulSubmission } from "./showElements.js";
 import { deleteAllOrderItems, deleteOrderItem } from "./deleteElements.js";
 import { renderIngridients } from "./index.js";
 import { validatePhone } from "./validate.js";
 import { Categories } from "./types.js";
-export function addItemToOrderList(e) {
-    if (e.target.nodeName === 'LI') {
-        const text = e.target.textContent;
-        const category = e.target.parentNode.id.split('-')[0];
+export function addItemToOrderList({ target }) {
+    if (target.nodeName === 'LI') {
+        const text = target.textContent;
+        const nameWithoutOtherSymbols = text.split('- ')[1];
+        const category = target.parentNode.id.split('-')[0];
         if (isAddIngridients(category, text)) {
-            if (category === Categories.main) {
-                const component = ingr.main.filter((item) => item.name === text.split('- ')[1]);
-                orderState.main.push(...component);
-            }
-            else if (category === Categories.meat) {
-                const component = ingr.meat.filter((item) => item.name === text.split('- ')[1]);
-                orderState.meat.push(...component);
-            }
-            else if (category === Categories.sauce) {
-                const component = ingr.sauce.filter((item) => item.name === text.split('- ')[1]);
-                orderState.sauce.push(...component);
-            }
-            else if (category === Categories.vegetables) {
-                const component = ingr.vegetables.filter((item) => item.name === text.split('- ')[1]);
-                orderState.vegetables.push(...component);
-            }
+            Object.keys(Categories).forEach((categoryName) => {
+                if (category === categoryName) {
+                    const component = ingr[category].filter((item) => item.name === nameWithoutOtherSymbols);
+                    orderState[category].push(...component);
+                }
+            });
             createOrderItem(text, category);
-            const currentPrice = calculatePrice();
-            showTotalPrice(currentPrice);
-            const orderStep = checkFullSet();
-            changeImage(orderStep);
-            e.target.classList.add('active');
+            rerenderPriceAndImage();
+            target.classList.add('active');
         }
     }
 }
@@ -80,9 +68,6 @@ export function deleteItemFromOrderList({ target }) {
             deleteOrderItem(text, category, targetElem);
             break;
     }
-}
-export function orderButton() {
-    createPopup();
 }
 export function removePopup() {
     const popup = document.getElementsByClassName('popup')[0];
